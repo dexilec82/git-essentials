@@ -1,0 +1,111 @@
+#git website
+https://git-scm.com/
+
+#help on git configuration commands
+git help
+
+#default git directory
+/etc/gitconfig
+Program Files\Git\etc\gitconfig
+
+#user git directory
+$HOME\.gitconfig
+
+#basic configuration
+git config --global user.name "carlotor"
+git config --global user.email "dexilec82@msn.com"
+git config --list
+git config user.name
+git config user.email
+
+cd ~
+ls -la | grep gitconfig
+cat .gitconfig
+
+#set the default editor, in my case I use visual studio code
+git config --global core.editor "code --wait"
+
+#now you can run the following command to use VS code as text editor for configuring git
+git config --global -e
+
+#to colorise git user interface
+git config --global color.ui true
+
+#auto-completion is already setup by default on windows but not on mac and linux
+
+#access git manual page
+git help log
+
+#initialize a project
+first create a project directory and navigate to that directory and type this command
+git init
+
+#a folder is initialize for git tracking if .git hidden folder is created inside the folder
+
+#to add files to git folder for tracking then commit the changes
+#. means to add in current folder location and m is message
+#make changes
+#add the changes
+#commit the changes to the repository with the message
+git add .
+#or 
+git add (filename)
+#then commit
+git commit -m "Initial commit"
+
+#to bypass staging
+git commit -a (filename)
+#or
+git commit --all
+
+#with message
+git commit -am "Your message"
+
+#view commit log
+git log
+
+#view log up to 5 commit history logs and other additional filters
+git log -n 5
+git log --since(date)
+git log --until(date)
+git log --author(author)
+git log --grep="Init"
+
+
+#check the head branch and hash value
+ls -la .git/
+cat .git/HEAD
+cat .git/refs/heads/master
+
+#get the git status
+#untracked means files are not in the git repository, git doesnt know about them so changes are not tracked
+git status
+
+#view changes and differences in the file changed in the working directory
+git diff
+
+#view changes and differences in the file changed in the staging area
+git diff --staged
+git diff --cache
+
+#remove a file
+git rm (filename to delete)
+git commit -m "Deleted file"
+
+#moving file
+git mv (filename) (folder name)(filename)
+
+#show the exact changes on a commit
+git show (first part of sha value of the commit)
+
+#compare commits and see the differences
+git diff (first part of sha value of first change)..(first part of sha value of second change)
+
+#to discard changes in the working directory to undo changes
+git checkout --(file)
+
+#to unstage changes
+git reset HEAD (file)
+
+
+
