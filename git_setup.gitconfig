@@ -107,5 +107,102 @@ git checkout --(file)
 #to unstage changes
 git reset HEAD (file)
 
+#get logs
+git log 
+git log --oneline
+git ls-tree (first 7 sha value)
+
+#excluding files globally
+git config --global core.excludesfile /path/to/.gitignore_global
+
+#manual method of drilling information into specific commits
+git log --oneline
+git cat-file -p (first 7 sha value)
+git ls-tree (first 7 sha value)
+git cat-file -p (first 7 sha value from the file of ls-tree output command)
+
+#alternative method of checking differences
+git log --oneline
+git diff (sha value 1st file)(sha value 2nd file) (filename)
+
+#verify last commit and master branch has same sha value
+cat .git/refs/heads/master
+git log --oneline
+
+#create a branch
+git branch (branch name)
+#verify the branch is created
+ls -la .git/refs/heads
+#verify the newly created branch points to the latest commit
+cat .git/refs/heads/(branch name)
+git log --oneline
+
+#check the list of branches
+git branch
+
+#switching the active branch, first check out the branch
+#to check out a branch means to make it active branch
+git checkout (branch name)
+
+#create a branch and checkout at the same time
+git checkout -b (branch name)
+
+#merging branches
+git merge (branch name)
+1. Switch to the branch into which the other branch should be merged. If you’re
+merging back into master, check out (switch to) master.
+2. Run the git merge command, specifying the name of the branch to be merged
+into master.
+3. Supply a message (a commit message for the merge commit) describing the
+changes being merged
+
+#deleting branches
+git branch -d (branch name)
+
+#linking repositories with remote
+cp -ar net-auto netauto2 --> copy net-auto repository to netauto2 repository
+dexil@DESKTOP-N8DTM9J:~/netauto2$ git remote --> list existing remotes
+dexil@DESKTOP-N8DTM9J:~/netauto2$ git remote add first ~/net-auto --> add a remote to the netauto2 that refers back to the original repository net-auto
+dexil@DESKTOP-N8DTM9J:~/netauto2$ git branch -a  --> list branches including hiddedn remote tracking branches
+dexil@DESKTOP-N8DTM9J:~/netauto2$ git remote update first --> update the branch with the remote tracking branch
+
+#Instead of the two-step git remote add followed by git remote
+#update, you can fetch information from a remote repository when
+#you add the remote using the syntax
+git remote add -f (name location)
+
+#after fetching the date to update the remote tracking branch merge to make them part of the repository
+git checkout master
+git merge first/master
+
+#pulling information from remote repositories
+#instead of using two step process (git feath and git merge)
+#use this command to fetch changes and merge them in a single operation
+git pull (name)
+
+#and the most simplest way of copying repository is cloning it
+#this automatically creates a remote pointing back to the original repository
+git clone (repository)(directory)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
